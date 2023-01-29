@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Creating Workspace') {
+            steps {
+               git credentialsId: '622a1e9f-7d14-42b7-a3d1-6396413cd445', poll: false, url: 'https://github.com/BharatIMA/abc-technologies.git' 
+               echo 'workspace created'
+            }
+        }
+    
+        stage('Building code with MVN') {
+            steps {
+               sh 'mvn clean install'
+               echo 'build created'
+            }
+        }
+        stage('Building docker image') {
+            steps {
+               sh 'docker build -t BharatIMA/edureka:v1 Dockerfile'
+               sh 'docker image push BharatIMA/edureka:v1'
+               sh 'docker rmi BharatIMA/edureka:v$buildid'
+               echo $env.BUILD_NUMBER
+               
+               
+            }
+        }
+    }
+}
