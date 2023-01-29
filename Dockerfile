@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 LABEL maintainer=”ersingh302@gmail.com”
 
-RUN apt-get -y update 
+RUN apt-get update -y
 RUN apt-get -y install openjdk-8-jdk wget
 RUN apt-get install zip -y
 
