@@ -7,24 +7,24 @@
       ignore_errors: yes
       docker_container:
        name: ABCtechnology
-       image: BharatIMA/abc-technology:latest
+       image: bharatima/abc-technology:latest
        state: stopped
     - name: Remove container
       ignore_errors: yes
       docker_container:
        name: ABCtechnology
-       image: BharatIMA/abc-technology:latest
+       image: bharatima/abc-technology:latest
        state: absent
     - name: Remove image
       ignore_errors: yes
       docker_image:
        state: absent
-       name: BharatIMA/abc-technology
+       name: bharatima/abc-technology
        tag: latest
     - name: Build the image on local
       connection: local
       docker_image:
-       name: BharatIMA/abc-technology
+       name: bharatima/abc-technology
        source: build
        build:
         path: .
@@ -32,14 +32,14 @@
     - name: Log into DockerHub
       connection: local
       docker_login:
-       username: BharatIMA
-       password: DevOps12
+       username: bharatima
+       password: DevOps#12
        email: ersingh302@gmail.com
     - name: Tag and push to docker hub on local
       connection: local
       docker_image:
-       name: BharatIMA/abc-technology:latest
-       repository: BharatIMA/abc-technology
+       name: bharatima/abc-technology:latest
+       repository: bharatima/abc-technology
        push: yes
        source: local
     - name: Remove image
@@ -47,21 +47,21 @@
       ignore_errors: yes
       docker_image:
        state: absent
-       name: BharatIMA/abc-technology
+       name: bharatima/abc-technology
        tag: latest
     - name: Log into DockerHub
       docker_login:
-       username: BharatIMA
-       password: DevOps12
+       username: bharatima
+       password: DevOps#12
        email: ersingh302@gmail.com
     - name: Pull image from dockerhub repo
       docker_image:
-       name: BharatIMA/abc-technology:latest
+       name: bharatima/abc-technology:latest
        source: pull
     - name: Create the container
       docker_container:
        name: ABCtechnology
-       image: BharatIMA/abc-technology:latest
+       image: bharatima/abc-technology:latest
        ports:
         - "80:8080"
 ...

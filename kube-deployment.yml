@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: abctech-cont
-        image: BharatIMA/abc-technology:latest
+        image: bharatima/abc-technology:latest
         ports:
         - containerPort: 8080
 ---
