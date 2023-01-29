@@ -64,4 +64,5 @@
        image: BharatIMA/abc-technology:latest
        ports:
         - "80:8080"
+
 ...
