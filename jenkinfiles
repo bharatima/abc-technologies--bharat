@@ -17,11 +17,13 @@ pipeline {
         }
         stage('Building docker image') {
             steps {
+            //withCredentials([string(credentialsId: 'bharatima', variable: 'bharatima')]) {
+               sh 'docker login -u bharatiam -p DevOps@12'
                sh 'docker build -t bharatima/edureka:v1 .'
                sh 'docker image push bharatima/edureka:v1'
                sh 'docker rmi bharatima/edureka:v$buildid'
                echo $env.BUILD_NUMBER
-               
+              // }
                
             }
         }
