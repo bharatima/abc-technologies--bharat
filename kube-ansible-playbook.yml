@@ -42,5 +42,4 @@
       shell: kubectl apply -f https://raw.githubusercontent.com/BharatIMA/abc-technologies/master/kube-deployment.yml
       args:
         chdir: $HOME
-
 ...
