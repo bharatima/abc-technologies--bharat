@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {     
+    DOCKERHUB_CREDENTIALS= credentials('bharatima')     
+    } 
     stages {
         stage('Creating Workspace') {
             steps {
@@ -17,13 +19,14 @@ pipeline {
         }
         stage('Building docker image') {
             steps {
-            //withCredentials([string(credentialsId: 'bharatima', variable: 'bharatima')]) {
-               sh 'docker login -u bharatiam -p DevOps@12'
-               sh 'docker build -t bharatima/edureka:v1 .'
-               sh 'docker image push bharatima/edureka:v1'
-               sh 'docker rmi bharatima/edureka:v$buildid'
+            withCredentials([usernamePassword(credentialsId: '622a1e9f-7d14-42b7-a3d1-6396413cd445', passwordVariable: 'docker_psw', usernameVariable: 'docker_usr')])
+            {
+               sh  'sudo docker login -u $docker_usr -p $docker_psw'
+               sh 'docker build -t bharatima/edureka:V$env.BUILD_NUMBER .'
+               sh 'docker image push bharatima/edureka:V$env.BUILD_NUMBER'
+               sh 'docker rmi bharatima/edureka:V$env.BUILD_NUMBER'
                echo $env.BUILD_NUMBER
-              // }
+              }
                
             }
         }
