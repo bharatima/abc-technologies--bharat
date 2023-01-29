@@ -21,7 +21,7 @@ pipeline {
             steps {
             withCredentials([usernamePassword(credentialsId: '622a1e9f-7d14-42b7-a3d1-6396413cd445', passwordVariable: 'docker_psw', usernameVariable: 'docker_usr')])
             {
-               sh  'sudo docker login -u $docker_usr -p $docker_psw'
+               sh  'docker login -u 'bharatima' -p $docker_psw'
                sh 'docker build -t bharatima/edureka:V$env.BUILD_NUMBER .'
                sh 'docker image push bharatima/edureka:V$env.BUILD_NUMBER'
                sh 'docker rmi bharatima/edureka:V$env.BUILD_NUMBER'
