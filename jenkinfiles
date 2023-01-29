@@ -17,9 +17,9 @@ pipeline {
         }
         stage('Building docker image') {
             steps {
-               sh 'docker build -t BharatIMA/edureka:v1 Dockerfile'
-               sh 'docker image push BharatIMA/edureka:v1'
-               sh 'docker rmi BharatIMA/edureka:v$buildid'
+               sh 'docker build -t bharatima/edureka:v1 .'
+               sh 'docker image push bharatima/edureka:v1'
+               sh 'docker rmi bharatima/edureka:v$buildid'
                echo $env.BUILD_NUMBER
                
                
