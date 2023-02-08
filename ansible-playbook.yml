@@ -1,7 +1,7 @@
 ---
 - name: Build docker image & deploy on docker container
   gather_facts: true
-  hosts: 172.31.28.37
+  hosts: all
   tasks:
     - name: Stop the container, if running
       ignore_errors: yes
