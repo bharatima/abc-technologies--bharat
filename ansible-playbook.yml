@@ -2,6 +2,15 @@
 - name: Build docker image & deploy on docker container
   gather_facts: true
   hosts: all
+  remote_user: jenkins
+  vars:
+    authorized_key_list:
+      - name: jenkins
+        authorized_keys:
+         - key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+           state: present
+  roles:
+    - { role: GROG.authorized-key }
   tasks:
     - name: Stop the container, if running
       ignore_errors: yes
