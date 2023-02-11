@@ -9,7 +9,7 @@ RUN wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.55/bin/apache-tomc
 RUN cd /tmp && tar xvfz tomcat.tar.gz
 RUN mv /tmp/apache-tomcat-8.5.55 /opt/tomcat
 
-COPY /var/lib/jenkins/workspace/package-job/target/ABCtechnologies-1.0.war /tmp/ABCtechnologies-1.0.war
+COPY target/ABCtechnologies-1.0.war /tmp/ABCtechnologies-1.0.war
 RUN unzip /tmp/ABCtechnologies-1.0.war -d /tmp/ABCtechnologies
 RUN mv /tmp/ABCtechnologies /opt/tomcat/webapps/
 
