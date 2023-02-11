@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:latest
 LABEL maintainer=”ersingh302@gmail.com”
 
 RUN apt-get -y update 
